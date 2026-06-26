@@ -1,0 +1,20 @@
+{
+  "root": {
+    "nodeId": "gen-project-shell",
+    "kind": "project-shell",
+    "status": "planned",
+    "output": "partials/project-shell.html",
+    "sharedRegions": ["global-background", "brand-colors", "typography"],
+    "children": [
+      {
+        "nodeId": "gen-page-login",
+        "kind": "page-leaf",
+        "pageIds": ["page-login"],
+        "status": "planned",
+        "output": "pages/login.html",
+        "privateRegions": ["full-page-content"],
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "project": {
+    "name": "机票预定登录页",
+    "operation": "create",
+    "operatingMode": "free-explore",
+    "deviceType": "desktop",
+    "designRead": "login page / travelers / fresh business trust / low density / avoid purple neon",
+    "designDials": {
+      "layoutVariance": 2,
+      "motionIntensity": 1,
+      "visualDensity": 2
+    },
+    "designSource": {
+      "operatingMode": "free-explore",
+      "brandCssPath": "colors_and_type.css",
+      "brandPrefix": "fb",
+      "styleConstraints": {
+        "radiusMax": 16,
+        "staticShadowAlphaMax": 0.05
+      }
+    },
+    "generationTree": {
+      "root": {
+        "nodeId": "gen-project-shell",
+        "kind": "project-shell",
+        "status": "planned",
+        "output": "partials/project-shell.html",
+        "sharedRegions": ["global-background", "brand-colors", "typography"],
+        "children": [
+          {
+            "nodeId": "gen-page-login",
+            "kind": "page-leaf",
+            "pageIds": ["page-login"],
+            "status": "planned",
+            "output": "pages/login.html",
+            "privateRegions": ["full-page-content"],
+            "children": []
+          }
+        ]
+      }
+    }
+  },
+  "designSource": {
+    "operatingMode": "free-explore",
+    "brandCssPath": "colors_and_type.css",
+    "brandPrefix": "fb",
+    "libraryIdentity": null
+  },
+  "pages": [
+    {
+      "nodeId": "page-login",
+      "title": "登录",
+      "htmlSrc": "pages/login.html",
+      "pageIndex": 1,
+      "pageType": "task-driven",
+      "visualNorthStar": "A split-screen login with left brand hero area and right clean form, evoking air travel freedom",
+      "compositionPattern": "split-screen-asymmetric",
+      "continuityAnchors": {
+        "colorSystem": "Blue primary tint scale with neutral gray surface",
+        "typographySystem": "Inter + system sans-serif stack",
+        "surfaceDepth": "Border-led surfaces, shadow only on floating elements"
+      },
+      "componentPlan": {
+        "contractKind": "free-explore",
+        "contractFile": null
+      },
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    }
+  ],
+  "assets": [],
+  "wiringPlan": [],
+  "hiddenInteractionPlan": []
+}

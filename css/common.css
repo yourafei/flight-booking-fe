@@ -1,0 +1,175 @@
+:root {
+  --fb-primary: #3B82F6;
+  --fb-primary-light: #60A5FA;
+  --fb-primary-lighter: #93C5FD;
+  --fb-primary-lightest: #DBEAFE;
+  --fb-primary-dark: #2563EB;
+  --fb-primary-tint-50: #EFF6FF;
+  --fb-primary-tint-100: #DBEAFE;
+  --fb-primary-tint-200: #BFDBFE;
+  --fb-primary-tint-300: #93C5FD;
+  --fb-primary-tint-400: #60A5FA;
+  --fb-primary-tint-500: #3B82F6;
+  --fb-primary-tint-600: #2563EB;
+  --fb-primary-tint-700: #1D4ED8;
+  --fb-primary-tint-800: #1E40AF;
+  --fb-primary-tint-900: #1E3A8A;
+  --fb-primary-tint-950: #172554;
+
+  --fb-gray-50: #F8FAFC;
+  --fb-gray-100: #F1F5F9;
+  --fb-gray-200: #E2E8F0;
+  --fb-gray-300: #CBD5E1;
+  --fb-gray-400: #94A3B8;
+  --fb-gray-500: #64748B;
+  --fb-gray-600: #475569;
+  --fb-gray-700: #334155;
+  --fb-gray-800: #1E293B;
+  --fb-gray-900: #0F172A;
+  --fb-gray-950: #020617;
+
+  --fb-state-success: #10B981;
+  --fb-state-warning: #F59E0B;
+  --fb-state-error: #EF4444;
+  --fb-state-info: #06B6D4;
+
+  --fb-bg-body: #0F172A;
+  --fb-bg-surface: #1E293B;
+  --fb-bg-surface-elevated: #334155;
+  --fb-bg-inverse: #F8FAFC;
+
+  --fb-fg-primary: #F1F5F9;
+  --fb-fg-secondary: #94A3B8;
+  --fb-fg-tertiary: #64748B;
+  --fb-fg-inverse: #0F172A;
+  --fb-fg-on-primary: #FFFFFF;
+
+  --fb-border: #334155;
+  --fb-border-strong: #475569;
+
+  --fb-radius-sm: 6px;
+  --fb-radius-md: 10px;
+  --fb-radius-lg: 14px;
+  --fb-radius-full: 9999px;
+
+  --fb-shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --fb-shadow-md: 0 2px 8px rgba(0,0,0,0.05);
+  --fb-shadow-float: 0 8px 24px rgba(0,0,0,0.05);
+  --fb-shadow-float-lg: 0 16px 48px rgba(0,0,0,0.05);
+
+  --fb-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --fb-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --fb-text-xs: 0.75rem;
+  --fb-text-xs-leading: 1rem;
+  --fb-text-sm: 0.875rem;
+  --fb-text-sm-leading: 1.25rem;
+  --fb-text-base: 1rem;
+  --fb-text-base-leading: 1.5rem;
+  --fb-text-lg: 1.125rem;
+  --fb-text-lg-leading: 1.75rem;
+  --fb-text-xl: 1.25rem;
+  --fb-text-xl-leading: 1.75rem;
+  --fb-text-2xl: 1.5rem;
+  --fb-text-2xl-leading: 2rem;
+  --fb-text-3xl: 1.875rem;
+  --fb-text-3xl-leading: 2.25rem;
+  --fb-text-4xl: 2.25rem;
+  --fb-text-4xl-leading: 2.5rem;
+
+  --fb-space-1: 4px;
+  --fb-space-2: 8px;
+  --fb-space-3: 12px;
+  --fb-space-4: 16px;
+  --fb-space-5: 20px;
+  --fb-space-6: 24px;
+  --fb-space-8: 32px;
+  --fb-space-10: 40px;
+  --fb-space-12: 48px;
+  --fb-space-16: 64px;
+}
+
+html.light {
+  --fb-bg-body: #FFFFFF;
+  --fb-bg-surface: #F8FAFC;
+  --fb-bg-surface-elevated: #FFFFFF;
+  --fb-bg-inverse: #0F172A;
+  --fb-fg-primary: #0F172A;
+  --fb-fg-secondary: #475569;
+  --fb-fg-tertiary: #94A3B8;
+  --fb-fg-inverse: #F8FAFC;
+  --fb-border: #E2E8F0;
+  --fb-border-strong: #CBD5E1;
+  --fb-primary-tint-50: #EFF6FF;
+  --fb-primary-tint-100: #DBEAFE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--fb-font-sans);
+  background-color: var(--fb-bg-body);
+  color: var(--fb-fg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+[data-icon] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - SkyGo</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <script src="../js/common.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-primary: var(--fb-primary);
+    --color-border: var(--fb-border);
+  }
+  @layer base {
+    body { background: var(--fb-background); color: var(--fb-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style>
+      .input-error {
+        border-color: var(--fb-state-error) !important;
+      }
+      .input-error:focus {
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+      }
+      .error-text {
+        color: var(--fb-state-error);
+        font-size: var(--fb-text-xs);
+        margin-top: 4px;
+      }
+      .theme-toggle-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--fb-border);
+        color: var(--fb-fg-secondary);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .theme-toggle-btn:hover {
+        color: var(--fb-primary-light);
+        border-color: var(--fb-primary);
+      }
+      @media (max-width: 640px) {
+        .theme-toggle-btn {
+          top: 12px;
+          right: 12px;
+          width: 36px;
+          height: 36px;
+        }
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased" style="background: var(--fb-bg-body); color: var(--fb-fg-primary);">
+    <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="切换主题">
+      <i data-lucide="sun" id="theme-icon" class="w-5 h-5"></i>
+    </button>
+
+    <main class="min-h-screen relative flex items-center justify-center px-4 py-8 md:px-6">
+      <div class="fixed inset-0 z-0">
+        <img src="../assets/ai-hero-bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.75) 50%, rgba(15,23,42,0.6) 100%);"></div>
+        <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 40%, rgba(59,130,246,0.12) 0%, rgba(59,130,246,0.06) 40%, transparent 70%);"></div>
+      </div>
+
+      <div class="relative z-10 w-full max-w-md mx-auto animate-slide-up" style="background: rgba(30,41,59,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--fb-border); border-top: 1px solid rgba(96,165,250,0.3); border-radius: var(--fb-radius-lg); box-shadow: 0 0 40px rgba(59,130,246,0.06), 0 25px 50px rgba(0,0,0,0.3);">
+        <div class="px-6 py-10 md:px-8 md:py-10">
+
+          <div class="flex flex-col items-center mb-8">
+            <div class="flex items-center gap-2.5 mb-3">
+              <i data-lucide="plane" class="w-6 h-6" style="color: var(--fb-primary-light);"></i>
+              <span class="text-xl font-semibold tracking-tight" style="color: var(--fb-primary-light); text-wrap: balance; word-break: keep-all;">SkyGo</span>
+            </div>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium whitespace-nowrap" style="color: var(--fb-primary-lighter); background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25); border-radius: var(--fb-radius-full);">
+              <i data-lucide="sparkles" class="w-3 h-3"></i>
+              AI 智能航班推荐
+            </span>
+          </div>
+
+          <h1 class="text-center mb-2 font-semibold truncate" style="font-size: var(--fb-text-2xl); line-height: var(--fb-text-2xl-leading); color: var(--fb-fg-primary); text-wrap: balance; word-break: keep-all; overflow-wrap: break-word;">
+            欢迎回来
+          </h1>
+          <p class="text-center mb-8 text-sm" style="color: var(--fb-fg-secondary);">
+            登录你的账户，开启智能出行
+          </p>
+
+          <form class="space-y-5" id="login-form" onsubmit="handleLogin(event)">
+            <div class="space-y-2">
+              <label for="login-email" class="block text-xs font-medium" style="color: var(--fb-fg-secondary);">手机号 / 邮箱</label>
+              <input id="login-email" type="text" placeholder="请输入手机号或邮箱" autocomplete="username"
+                class="w-full h-12 px-4 text-sm outline-none transition-all duration-200"
+                style="background: var(--fb-bg-surface-elevated); color: var(--fb-fg-primary); border: 1px solid var(--fb-border); border-radius: var(--fb-radius-md);"
+                onfocus="this.style.borderColor='var(--fb-primary)'; this.style.boxShadow='0 0 0 3px rgba(59,130,246,0.15)';"
+                onblur="this.style.borderColor='var(--fb-border)'; this.style.boxShadow='none'; validateAccount();" />
+              <div id="account-error" class="error-text" style="display: none;"></div>
+            </div>
+
+            <div class="space-y-2">
+              <label for="login-password" class="block text-xs font-medium" style="color: var(--fb-fg-secondary);">密码</label>
+              <div class="relative">
+                <input id="login-password" type="password" placeholder="请输入密码" autocomplete="current-password"
+                  class="w-full h-12 px-4 pr-12 text-sm outline-none transition-all duration-200"
+                  style="background: var(--fb-bg-surface-elevated); color: var(--fb-fg-primary); border: 1px solid var(--fb-border); border-radius: var(--fb-radius-md);"
+                  onfocus="this.style.borderColor='var(--fb-primary)'; this.style.boxShadow='0 0 0 3px rgba(59,130,246,0.15)';"
+                  onblur="this.style.borderColor='var(--fb-border)'; this.style.boxShadow='none'; validatePassword();" />
+                <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 p-1 transition-opacity duration-150 hover:opacity-70"
+                  style="color: var(--fb-fg-tertiary);"
+                  onclick="togglePassword()"
+                  aria-label="切换密码可见性">
+                  <i data-lucide="eye" id="password-icon" class="w-5 h-5"></i>
+                </button>
+              </div>
+              <div id="password-error" class="error-text" style="display: none;"></div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <label class="flex items-center gap-2 cursor-pointer text-sm" style="color: var(--fb-fg-secondary);">
+                <input type="checkbox" id="remember-me" class="w-4 h-4 rounded" style="accent-color: var(--fb-primary);" />
+                <span>记住我</span>
+              </label>
+              <a href="#" onclick="handleForgotPassword(event)" class="text-sm font-medium transition-colors duration-150 hover:underline" style="color: var(--fb-primary-light);">忘记密码?</a>
+            </div>
+
+            <button type="submit" id="login-submit-btn"
+              class="w-full h-12 flex items-center justify-center whitespace-nowrap text-sm font-semibold transition-all duration-200 hover:shadow-lg active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              style="background: linear-gradient(135deg, var(--fb-primary) 0%, var(--fb-state-info) 100%); color: var(--fb-fg-on-primary); border-radius: var(--fb-radius-lg); outline-color: var(--fb-primary); border: none; box-shadow: 0 4px 15px rgba(59,130,246,0.25);"
+              onmouseenter="this.style.boxShadow='0 6px 25px rgba(59,130,246,0.4), 0 0 20px rgba(59,130,246,0.2)'"
+              onmouseleave="this.style.boxShadow='0 4px 15px rgba(59,130,246,0.25)'">
+              <span id="login-btn-text">登录</span>
+              <div id="login-btn-loading" style="display: none; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; margin-left: 8px;"></div>
+            </button>
+          </form>
+
+          <div class="flex items-center gap-4 my-6">
+            <div class="flex-1 h-px" style="background: var(--fb-border);"></div>
+            <span class="text-xs whitespace-nowrap" style="color: var(--fb-fg-tertiary);">或</span>
+            <div class="flex-1 h-px" style="background: var(--fb-border);"></div>
+          </div>
+
+          <div class="flex gap-3">
+            <button type="button" onclick="handleSocialLogin('wechat')"
+              class="flex-1 h-11 flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 hover:border-[var(--fb-state-info)] hover:text-[var(--fb-primary-lighter)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              style="background: transparent; color: var(--fb-fg-secondary); border: 1px solid var(--fb-border); border-radius: var(--fb-radius-md); outline-color: var(--fb-primary);">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              微信登录
+            </button>
+            <button type="button" onclick="handleSocialLogin('alipay')"
+              class="flex-1 h-11 flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 hover:border-[var(--fb-state-info)] hover:text-[var(--fb-primary-lighter)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              style="background: transparent; color: var(--fb-fg-secondary); border: 1px solid var(--fb-border); border-radius: var(--fb-radius-md); outline-color: var(--fb-primary);">
+              <i data-lucide="wallet" class="w-4 h-4"></i>
+              支付宝登录
+            </button>
+          </div>
+
+          <p class="mt-8 text-sm text-center" style="color: var(--fb-fg-secondary);">
+            还没有账户？
+            <a href="#" onclick="handleRegister(event)" class="font-medium transition-colors duration-150 hover:underline" style="color: var(--fb-primary-light);">立即注册</a>
+          </p>
+
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function toggleTheme() {
+        const newTheme = SkyGo.theme.toggle();
+        updateThemeIcon(newTheme);
+        SkyGo.ui.toast(`已切换到${newTheme === 'light' ? '浅色' : '深色'}模式`, 'info', 2000);
+      }
+
+      function updateThemeIcon(theme) {
+        const icon = document.getElementById('theme-icon');
+        if (icon) {
+          icon.setAttribute('data-lucide', theme === 'light' ? 'moon' : 'sun');
+          lucide.createIcons({ root: document.querySelector('.theme-toggle-btn') });
+        }
+      }
+
+      function togglePassword() {
+        const p = document.getElementById('login-password');
+        const icon = document.getElementById('password-icon');
+        if (p.type === 'password') {
+          p.type = 'text';
+          icon.setAttribute('data-lucide', 'eye-off');
+        } else {
+          p.type = 'password';
+          icon.setAttribute('data-lucide', 'eye');
+        }
+        lucide.createIcons({ root: document.querySelector('#login-password').parentElement });
+      }
+
+      function validateAccount() {
+        const input = document.getElementById('login-email');
+        const error = document.getElementById('account-error');
+        const value = input.value.trim();
+        
+        if (!value) {
+          input.classList.add('input-error');
+          error.textContent = '请输入手机号或邮箱';
+          error.style.display = 'block';
+          return false;
+        }
+        
+        if (!SkyGo.utils.validateEmailOrPhone(value)) {
+          input.classList.add('input-error');
+          error.textContent = '请输入有效的手机号或邮箱';
+          error.style.display = 'block';
+          return false;
+        }
+        
+        input.classList.remove('input-error');
+        error.style.display = 'none';
+        return true;
+      }
+
+      function validatePassword() {
+        const input = document.getElementById('login-password');
+        const error = document.getElementById('password-error');
+        const value = input.value;
+        
+        if (!value) {
+          input.classList.add('input-error');
+          error.textContent = '请输入密码';
+          error.style.display = 'block';
+          return false;
+        }
+        
+        if (value.length < 6) {
+          input.classList.add('input-error');
+          error.textContent = '密码长度不能少于6位';
+          error.style.display = 'block';
+          return false;
+        }
+        
+        input.classList.remove('input-error');
+        error.style.display = 'none';
+        return true;
+      }
+
+      function handleLogin(e) {
+        e.preventDefault();
+        
+        const isAccountValid = validateAccount();
+        const isPasswordValid = validatePassword();
+        
+        if (!isAccountValid || !isPasswordValid) {
+          return;
+        }
+        
+        const btn = document.getElementById('login-submit-btn');
+        const btnText = document.getElementById('login-btn-text');
+        const btnLoading = document.getElementById('login-btn-loading');
+        
+        btn.disabled = true;
+        btnText.textContent = '登录中';
+        btnLoading.style.display = 'inline-block';
+        
+        setTimeout(() => {
+          const account = document.getElementById('login-email').value.trim();
+          const remember = document.getElementById('remember-me').checked;
+          
+          const user = {
+            name: account.includes('@') ? account.split('@')[0] : account.slice(-4),
+            account: account,
+            avatar: account.charAt(0).toUpperCase(),
+            loginTime: new Date().toISOString()
+          };
+          
+          if (remember) {
+            SkyGo.auth.setUser(user);
+          } else {
+            sessionStorage.setItem('skygo-user-temp', JSON.stringify(user));
+            SkyGo.auth.setUser(user);
+          }
+          
+          SkyGo.ui.toast('登录成功！正在跳转...', 'success', 1500);
+          
+          setTimeout(() => {
+            window.location.href = 'flight-select.html';
+          }, 1000);
+        }, 1200);
+      }
+
+      function handleForgotPassword(e) {
+        e.preventDefault();
+        SkyGo.ui.toast('请联系客服重置密码', 'info', 3000);
+      }
+
+      function handleSocialLogin(type) {
+        const name = type === 'wechat' ? '微信' : '支付宝';
+        SkyGo.ui.confirm(`确定使用${name}登录吗？`, '第三方登录').then((confirmed) => {
+          if (confirmed) {
+            SkyGo.ui.toast(`正在跳转${name}授权...`, 'info', 2000);
+            
+            setTimeout(() => {
+              const user = {
+                name: type === 'wechat' ? '微信用户' : '支付宝用户',
+                account: type + '_user',
+                avatar: type === 'wechat' ? '微' : '支',
+                loginType: type,
+                loginTime: new Date().toISOString()
+              };
+              SkyGo.auth.setUser(user);
+              SkyGo.ui.toast('登录成功！正在跳转...', 'success', 1500);
+              setTimeout(() => {
+                window.location.href = 'flight-select.html';
+              }, 1000);
+            }, 1500);
+          }
+        });
+      }
+
+      function handleRegister(e) {
+        e.preventDefault();
+        SkyGo.ui.toast('注册功能即将上线，敬请期待', 'info', 3000);
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const savedAccount = SkyGo.storage.get('skygo-remember-account');
+        if (savedAccount) {
+          document.getElementById('login-email').value = savedAccount;
+          document.getElementById('remember-me').checked = true;
+        }
+        
+        const currentTheme = document.documentElement.classList.contains('light') ? 'light' : 'dark';
+        updateThemeIcon(currentTheme);
+        
+        const rememberCheckbox = document.getElementById('remember-me');
+        rememberCheckbox.addEventListener('change', function() {
+          if (this.checked) {
+            const account = document.getElementById('login-email').value.trim();
+            if (account) {
+              SkyGo.storage.set('skygo-remember-account', account);
+            }
+          } else {
+            SkyGo.storage.remove('skygo-remember-account');
+          }
+        });
+        
+        document.getElementById('login-email').addEventListener('input', function() {
+          if (rememberCheckbox.checked && this.value.trim()) {
+            SkyGo.storage.set('skygo-remember-account', this.value.trim());
+          }
+        });
+      });
+    </script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

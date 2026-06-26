@@ -1,0 +1,98 @@
+{
+  "data": [
+    {
+      "id": "page-login",
+      "title": "登录",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1750930000000,
+      "canvasData": {
+        "x": -24,
+        "y": -12,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/login.html",
+        "interactions": [
+          {
+            "domId": "login-submit",
+            "targetPageId": "page-flight-select",
+            "transitionLabel": "登录成功"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-flight-select",
+      "title": "航班选择",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1750930100000,
+      "canvasData": {
+        "x": 620,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/flight-select.html",
+        "interactions": [
+          {
+            "domId": "nav-logout",
+            "targetPageId": "page-login",
+            "hideEdge": true,
+            "transitionLabel": "退出登录"
+          }
+        ]
+      }
+    },
+    {
+      "id": "image-001",
+      "title": "登录页主视觉",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1750930000000,
+      "canvasData": {
+        "x": 0,
+        "y": 399
+      },
+      "devMetadata": {
+        "imageSrc": "assets/login-hero.jpg"
+      }
+    },
+    {
+      "id": "image-002",
+      "title": "AI科技主视觉",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1750930100000,
+      "canvasData": {
+        "x": 620,
+        "y": 399
+      },
+      "devMetadata": {
+        "imageSrc": "assets/ai-hero-bg.jpg"
+      }
+    },
+    {
+      "id": "image-003",
+      "title": "航班选择页主视觉",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1750930200000,
+      "canvasData": {
+        "x": 1240,
+        "y": 399
+      },
+      "devMetadata": {
+        "imageSrc": "assets/flight-select-hero.jpg"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": false,
+    "deviceType": "desktop",
+    "projectName": "机票预定系统",
+    "designLibrary": null,
+    "showEdge": true
+  }
+}

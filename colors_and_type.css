@@ -1,0 +1,117 @@
+:root {
+  /* Brand Prefix: fb */
+  --fb-primary: #3B82F6;
+  --fb-primary-light: #60A5FA;
+  --fb-primary-lighter: #93C5FD;
+  --fb-primary-lightest: #DBEAFE;
+  --fb-primary-dark: #2563EB;
+  --fb-primary-tint-50: #EFF6FF;
+  --fb-primary-tint-100: #DBEAFE;
+  --fb-primary-tint-200: #BFDBFE;
+  --fb-primary-tint-300: #93C5FD;
+  --fb-primary-tint-400: #60A5FA;
+  --fb-primary-tint-500: #3B82F6;
+  --fb-primary-tint-600: #2563EB;
+  --fb-primary-tint-700: #1D4ED8;
+  --fb-primary-tint-800: #1E40AF;
+  --fb-primary-tint-900: #1E3A8A;
+  --fb-primary-tint-950: #172554;
+
+  /* Neutrals */
+  --fb-gray-50: #F8FAFC;
+  --fb-gray-100: #F1F5F9;
+  --fb-gray-200: #E2E8F0;
+  --fb-gray-300: #CBD5E1;
+  --fb-gray-400: #94A3B8;
+  --fb-gray-500: #64748B;
+  --fb-gray-600: #475569;
+  --fb-gray-700: #334155;
+  --fb-gray-800: #1E293B;
+  --fb-gray-900: #0F172A;
+  --fb-gray-950: #020617;
+
+  /* State colors */
+  --fb-state-success: #10B981;
+  --fb-state-warning: #F59E0B;
+  --fb-state-error: #EF4444;
+  --fb-state-info: #06B6D4;
+
+  /* Background - dark AI theme */
+  --fb-bg-body: #0F172A;
+  --fb-bg-surface: #1E293B;
+  --fb-bg-surface-elevated: #334155;
+  --fb-bg-inverse: #F8FAFC;
+
+  /* Foreground */
+  --fb-fg-primary: #F1F5F9;
+  --fb-fg-secondary: #94A3B8;
+  --fb-fg-tertiary: #64748B;
+  --fb-fg-inverse: #0F172A;
+  --fb-fg-on-primary: #FFFFFF;
+
+  /* Border */
+  --fb-border: #334155;
+  --fb-border-strong: #475569;
+
+  /* Radius */
+  --fb-radius-sm: 6px;
+  --fb-radius-md: 10px;
+  --fb-radius-lg: 14px;
+  --fb-radius-full: 9999px;
+
+  /* Shadow (static surfaces use border, floating layers allow deeper) */
+  --fb-shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --fb-shadow-md: 0 2px 8px rgba(0,0,0,0.05);
+  --fb-shadow-float: 0 8px 24px rgba(0,0,0,0.05);
+  --fb-shadow-float-lg: 0 16px 48px rgba(0,0,0,0.05);
+
+  /* Typography */
+  --fb-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --fb-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Type scale */
+  --fb-text-xs: 0.75rem;
+  --fb-text-xs-leading: 1rem;
+  --fb-text-sm: 0.875rem;
+  --fb-text-sm-leading: 1.25rem;
+  --fb-text-base: 1rem;
+  --fb-text-base-leading: 1.5rem;
+  --fb-text-lg: 1.125rem;
+  --fb-text-lg-leading: 1.75rem;
+  --fb-text-xl: 1.25rem;
+  --fb-text-xl-leading: 1.75rem;
+  --fb-text-2xl: 1.5rem;
+  --fb-text-2xl-leading: 2rem;
+  --fb-text-3xl: 1.875rem;
+  --fb-text-3xl-leading: 2.25rem;
+  --fb-text-4xl: 2.25rem;
+  --fb-text-4xl-leading: 2.5rem;
+
+  /* Spacing */
+  --fb-space-1: 4px;
+  --fb-space-2: 8px;
+  --fb-space-3: 12px;
+  --fb-space-4: 16px;
+  --fb-space-5: 20px;
+  --fb-space-6: 24px;
+  --fb-space-8: 32px;
+  --fb-space-10: 40px;
+  --fb-space-12: 48px;
+  --fb-space-16: 64px;
+}
+
+/* Light mode override */
+html.light {
+  --fb-bg-body: #FFFFFF;
+  --fb-bg-surface: #F8FAFC;
+  --fb-bg-surface-elevated: #FFFFFF;
+  --fb-bg-inverse: #0F172A;
+  --fb-fg-primary: #0F172A;
+  --fb-fg-secondary: #475569;
+  --fb-fg-tertiary: #94A3B8;
+  --fb-fg-inverse: #F8FAFC;
+  --fb-border: #E2E8F0;
+  --fb-border-strong: #CBD5E1;
+  --fb-primary-tint-50: #EFF6FF;
+  --fb-primary-tint-100: #DBEAFE;
+}

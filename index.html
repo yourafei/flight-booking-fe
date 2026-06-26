@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyGo - AI 智能航班推荐</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <script src="js/common.js"></script>
+</head>
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+    <div style="text-align: center;">
+        <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+            <i data-lucide="plane" style="width: 32px; height: 32px; color: var(--fb-primary-light);"></i>
+            <span style="font-size: 24px; font-weight: 600; color: var(--fb-primary-light);">SkyGo</span>
+        </div>
+        <p style="color: var(--fb-fg-secondary);">正在加载...</p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (SkyGo.auth.isLoggedIn()) {
+                window.location.href = 'pages/flight-select.html';
+            } else {
+                window.location.href = 'pages/login.html';
+            }
+        });
+    </script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
